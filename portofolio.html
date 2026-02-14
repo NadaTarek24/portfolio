@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nada Tarek · software engineer portfolio</title>
+    <!-- Font Awesome 6 (free) for clean icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f8fafc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #0b2545;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* ===== TYPOGRAPHY & UTILITY ===== */
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 7vw, 3.5rem);
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: #2563eb;
+            border-radius: 4px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        /* ===== HEADER / NAV ===== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(37,99,235,0.1);
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #1e293b;
+            transition: color 0.2s;
+            font-size: 1.1rem;
+        }
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+            margin-top: 1rem;
+        }
+        .hero-content {
+            flex: 1 1 400px;
+        }
+        .hero-content .badge {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #334155;
+            margin: 1.5rem 0 2rem;
+            max-width: 600px;
+        }
+        .hero-image {
+            flex: 1 1 300px;
+            background: linear-gradient(145deg, #e6f0ff, #ffffff);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            padding: 1.5rem;
+            box-shadow: 0 20px 40px -10px rgba(37,99,235,0.2);
+            text-align: center;
+        }
+        .hero-image i {
+            font-size: 10rem;
+            color: #2563eb;
+            opacity: 0.9;
+        }
+        .btn-group {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.9rem 2.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1.5px solid transparent;
+        }
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 8px 16px -6px #2563eb80;
+        }
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            border-color: #2563eb;
+            color: #2563eb;
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background: #eef2ff;
+            transform: translateY(-3px);
+        }
+
+        /* ===== SKILLS ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .skill-card {
+            background: white;
+            padding: 1.8rem 1rem;
+            border-radius: 32px;
+            box-shadow: 0 8px 20px -8px rgba(0,34,68,0.1);
+            text-align: center;
+            transition: 0.15s;
+            border: 1px solid #e9eef3;
+        }
+        .skill-card:hover {
+            transform: scale(1.02);
+            border-color: #2563eb40;
+        }
+        .skill-card i {
+            font-size: 2.6rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+        .skill-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* ===== WORK / PROJECTS ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.2rem;
+            margin-top: 1rem;
+        }
+        .project-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px -12px rgba(0,20,40,0.1);
+            transition: all 0.25s ease;
+            border: 1px solid #f0f4fa;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 28px 40px -12px #2563eb60;
+        }
+        .project-img {
+            background: #d9e6ff;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e3a8a;
+            font-size: 3rem;
+        }
+        .project-content {
+            padding: 1.6rem 1.5rem 2rem;
+            flex: 1;
+        }
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+        .project-tech {
+            font-size: 0.85rem;
+            color: #2563eb;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .project-content p {
+            color: #334155;
+            margin: 0.6rem 0 1rem;
+            font-size: 0.95rem;
+        }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0 1.2rem;
+        }
+        .tag {
+            background: #eef2ff;
+            color: #1e40af;
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .project-link {
+            text-decoration: none;
+            font-weight: 600;
+            color: #2563eb;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.95rem;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        .project-link i {
+            transition: transform 0.2s;
+        }
+        .project-link:hover {
+            border-bottom-color: #2563eb;
+        }
+        .project-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* ===== ABOUT / CONTACT ===== */
+        .about-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            background: white;
+            border-radius: 48px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px -16px rgba(0,0,0,0.05);
+            border: 1px solid #e2edff;
+        }
+        .about-text {
+            flex: 2 1 300px;
+        }
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .about-text p {
+            color: #334155;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+        .contact-list i {
+            width: 2rem;
+            color: #2563eb;
+            font-size: 1.3rem;
+        }
+        .contact-list a {
+            color: #0b2545;
+            text-decoration: none;
+            border-bottom: 1px dotted transparent;
+        }
+        .contact-list a:hover {
+            border-bottom-color: #2563eb;
+        }
+        .availability {
+            flex: 1 1 200px;
+            background: #f1f6fe;
+            border-radius: 36px;
+            padding: 2rem 1.8rem;
+            text-align: center;
+        }
+        .availability .status {
+            background: #22c55e;
+            width: 16px;
+            height: 16px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .availability h4 {
+            font-size: 1.8rem;
+            margin: 1rem 0;
+        }
+        .availability a {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: #2563eb;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .availability a:hover {
+            background: #1d4ed8;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 2.5rem;
+            border-top: 1px solid #dce5f0;
+            color: #475569;
+        }
+
+        /* ===== responsive ===== */
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .nav-links {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            h2:after {
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100px;
+            }
+            h2 {
+                display: block;
+                text-align: center;
+            }
+            .about-wrap {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <span class="logo"></span>
+        <div class="nav-links">
+            <a href="#work">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- HERO based on CV summary -->
+        <div class="container section" style="padding-bottom: 2rem;">
+            <div class="hero">
+                <div class="hero-content">
+                    <span class="badge"><i class="fas fa-cogs"></i> Backend Software Engineer</span>
+                    <h1>Nada Tarek<br>Backend Software Engineer</h1>
+                    <p>Backend developer specializing in .NET technologies (ASP.NET Core MVC, Web API, Entity Framework) and Python Django. I build secure, scalable, high‑performance web applications and RESTful APIs. DEPI graduate & continuous learner.</p>
+                    <div class="btn-group">
+                        <a href="#work" class="btn btn-primary"><i class="fas fa-arrow-down"></i> view projects</a>
+                        <a href="#contact" class="btn-outline btn"><i class="fas fa-paper-plane"></i> contact</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <i class="fas fa-database"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECTS section — 8 projects from CV, organised with clear tech labels -->
+        <section id="work" class="container section">
+            <h2>⚙️ featured projects</h2>
+            <div class="projects-grid">
+                <!-- 1. ECommerce CQRS Web API -->
+                <div class="project-card">
+                    <div class="project-img"><i class="fas fa-shopping-cart"></i></div>
+                    <div class="project-content">
+                        <div class="project-tech">ASP.NET Core 9 · CQRS · MediatR</div>
+                        <h3>ECommerce CQRS API</h3>
+                        <p>Modular REST API with CQRS pattern (MediatR), FluentValidation, AutoMapper, and EF Core. Manages customers, products, orders with stock logic.</p>
+                        <div class="project-tags">
+                            <span class="tag">.NET 9</span>
+                            <span class="tag">CQRS</span>
+                            <span class="tag">EF Core</span>
+                            <span class="tag">Swagger</span>
+                        </div>
+                        <a href="https://github.com/NadaTarek24/ECommerceCqrs" class="project-link" target="_blank">github repo <i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                     <!-- 2. Medicine Registration (Django) -->
+                <div class="project-card">
+                    <div class="project-img"><i class="fas fa-pills"></i></div>
+                    <div class="project-content">
+                        <div class="project-tech">Python Django · MTV · ORM</div>
+                        <h3>NEXPRO App</h3>
+                        <p>Medicine Registration Follow‑up Tracks medicine lifecycle from request to EDA approval. Interdepartmental collaboration & real‑time status.</p>
+                        <div class="project-tags">
+                            <span class="tag">Django</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Bootstrap</span>
+                            <span class="tag">ORM</span>
+                        </div>
+                        <span class="project-link" style="cursor:default; color:#64748b;">Enterprise Internal System – architecture available upon request</span>
+                    </div>
+                </div>
+                <!-- 3. Staff Management System (PHP) -->
+                <div class="project-card">
+                <div class="project-img"><i class="fas fa-users-cog"></i></div>
+                <div class="project-content">
+                    <div class="project-tech">PHP · MySQL · HTML · CSS · JavaScript · Bootstrap</div>
+                    <h3>Staff Management System</h3>
+                    <p>
+                        Web-based employee management system handling leave requests, business missions, day-offs, overtime tracking, 
+                        and permission management. Features role-based access, workflow approvals, reporting, and automated processes.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">PHP</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                    <span class="project-link" style="cursor:default; color:#64748b;">
+                        Enterprise Internal System – workflow & permission architecture available upon request
+                    </span>
+                </div>
+            </div>
+                <!-- 4. IT Report App (PyQt5) -->
+                <div class="project-card">
+                    <div class="project-img"><i class="fas fa-laptop"></i></div>
+                    <div class="project-content">
+                        <div class="project-tech">Python · PyQt5 · SQLite</div>
+                        <h3>IT Report App</h3>
+                        <p>Desktop app for PC maintenance, asset tracking, backup monitoring & automated email alerts. 40% productivity increase.</p>
+                        <div class="project-tags">
+                            <span class="tag">PyQt5</span>
+                            <span class="tag">SQLite</span>
+                            <span class="tag">automation</span>
+                        </div>
+                        <span class="project-link" style="cursor:default; color:#64748b;">client deployment</span>
+                    </div>
+                </div>
+                <!-- 5. Freelance Employee Management (ASP.NET MVC) -->
+                <div class="project-card">
+                    <div class="project-img"><i class="fas fa-users-cog"></i></div>
+                    <div class="project-content">
+                        <div class="project-tech">ASP.NET MVC · EF · SQL Server</div>
+                        <h3>Employee Management</h3>
+                        <p>Staff records, course assignments, performance tracking with advanced filtering & bar charts for trend analysis.</p>
+                        <div class="project-tags">
+                            <span class="tag">MVC</span>
+                            <span class="tag">EF</span>
+                            <span class="tag">charts</span>
+                            <span class="tag">Razor</span>
+                        </div>
+                        <span class="project-link" style="cursor:default; color:#64748b;">client project</span>
+                    </div>
+                </div>
+                <!-- 6. E-Commerce Shop (full-featured) -->
+                <div class="project-card">
+                    <div class="project-img"><i class="fas fa-store"></i></div>
+                    <div class="project-content">
+                        <div class="project-tech">ASP.NET Core MVC · Identity · Razor</div>
+                        <h3>E‑Commerce Shop</h3>
+                        <p>Full e‑commerce with product catalog, cart, order tracking, role‑based access (admin, seller, customer).</p>
+                        <div class="project-tags">
+                            <span class="tag">Identity</span>
+                            <span class="tag">EF</span>
+                            <span class="tag">LINQ</span>
+                            <span class="tag">Razor</span>
+                        </div>
+                        <span class="project-link" style="cursor:default; color:#64748b;">in development</span>
+                    </div>
+                </div>
+                <!-- 7. Todo Management System -->
+                <div class="project-card">
+                    <div class="project-img"><i class="fas fa-check-circle"></i></div>
+                    <div class="project-content">
+                        <div class="project-tech">ASP.NET Core MVC · Bootstrap · EF</div>
+                        <h3>Todo Management</h3>
+                        <p>Task system with CRUD, status (in‑progress), filtering & sorting. Clean architecture, responsive UI.</p>
+                        <div class="project-tags">
+                            <span class="tag">MVC</span>
+                            <span class="tag">Bootstrap</span>
+                            <span class="tag">EF</span>
+                        </div>
+                        <span class="project-link" style="cursor:default; color:#64748b;">demo ready</span>
+                    </div>
+                </div>
+           
+                
+                <!-- 8. Graduation project: Diseases Infection Recognition (Android) -->
+                <div class="project-card">
+                    <div class="project-img"><i class="fas fa-leaf"></i></div>
+                    <div class="project-content">
+                        <div class="project-tech">Android (Java) · Deep Learning</div>
+                        <h3>Plant Disease Recognition</h3>
+                        <p>Mobile app with 97.3% accuracy classifying plant diseases using leaf images. Deep learning model + Android frontend.</p>
+                        <div class="project-tags">
+                            <span class="tag">Java</span>
+                            <span class="tag">Android</span>
+                            <span class="tag">CNN</span>
+                            <span class="tag">image processing</span>
+                        </div>
+                        <span class="project-link" style="cursor:default; color:#64748b;">graduation A</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS (grouped from CV) -->
+        <section id="skills" class="container section">
+            <h2>⚡ tech stack & expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card"><i class="fab fa-microsoft"></i><h3>C# / .NET</h3></div>
+                <div class="skill-card"><i class="fas fa-code"></i><h3>ASP.NET Core</h3></div>
+                <div class="skill-card"><i class="fas fa-database"></i><h3>SQL Server</h3></div>
+                <div class="skill-card"><i class="fab fa-python"></i><h3>Python/Django</h3></div>
+                <div class="skill-card"><i class="fas fa-cubes"></i><h3>Entity Framework</h3></div>
+                <div class="skill-card"><i class="fas fa-lock"></i><h3>Identity & security</h3></div>
+                <div class="skill-card"><i class="fas fa-code-branch"></i><h3>RESTful APIs</h3></div>
+                <div class="skill-card"><i class="fas fa-mobile-alt"></i><h3>Responsive design</h3></div>
+                <div class="skill-card"><i class="fab fa-git-alt"></i><h3>Git/GitHub</h3></div>
+                <div class="skill-card"><i class="fas fa-brain"></i><h3>OOP · SOLID</h3></div>
+            </div>
+        </section>
+
+        <!-- ABOUT + CONTACT (with CV details) -->
+<section id="about" class="container section" style="padding-top: 2rem;">
+    <div id="contact" class="about-wrap">
+        <div class="about-text">
+            <h3>👩‍💻 Nada Tarek — Backend Software Engineer</h3>
+            <p><strong>Bachelor’s in Computer & Information Sciences</strong> · Ain Shams University · Very Good with Honors (GPA: 3.08 / 4) · 2019–2023</p>
+            <p>Software developer at <strong>Egyptian Group for Pharmaceutical Industries (EGPI)</strong> since 2024. DEPI graduate (.NET Full Stack). Passionate about building clean backends, automating workflows, and solving real-world problems with code.</p>
+
+            <p><strong>📄 Certifications:</strong> Digital Egypt Pioneers (.NET Full Stack) · Deep Learning Graduation Project (Grade A)</p>
+            <ul class="contact-list">
+                <li><i class="fas fa-phone-alt"></i> +20 1129031329</li>
+                <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/nada-tarek-366155239/" target="_blank">linkedin.com/in/nada-tarek-366155239</a></li>
+                <li><i class="fab fa-github"></i> <a href="https://github.com/NadaTarek24" target="_blank">github.com/NadaTarek24</a></li>
+                <li><i class="fas fa-envelope"></i> <a href="mailto:nada.t.h.emam@gmail.com">nada.t.h.emam@gmail.com</a></li>
+            </ul>
+        </div>
+        <div class="availability">
+            <span class="status"></span> Open for opportunities
+            <h4>📅 2026</h4>
+            <p style="margin: 1rem 0;">Available for freelance or full‑time backend / .NET roles.</p>
+            <a href="mailto:nada.t.h.emam@gmail.com"><i class="fas fa-paper-plane"></i> Send Message</a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>© 2026 Nada Tarek · Built with <i class="fas fa-heart" style="color:#2563eb;"></i> HTML & CSS — CV‑integrated portfolio</p>
+</footer>
+
+    </main>
+
+    <!-- smooth scroll -->
+    <script>
+        (function() {
+            document.querySelectorAll('.nav-links a, .btn-group a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
